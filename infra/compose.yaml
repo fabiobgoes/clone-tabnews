@@ -5,3 +5,4 @@ services:
       POSTGRES_PASSWORD: "local_password_fabio"
     ports:
       - "5432:5432"
+      
