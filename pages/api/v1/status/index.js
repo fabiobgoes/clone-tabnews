@@ -1,11 +1,14 @@
 import database from "infra/database.js";
 
+// implementar:
+//   versão do postgres
+//   conexões máximas
+//   conexões usadas
 async function status(request, response) {
-  const result = await database.query("SELECT 1 + 1 AS SUM;");
-  console.log(result.rows);
-  response
-    .status(200)
-    .json("alunos do curso.dev são pessoas acima " + "da média_.");
+  const updatedAt = new Date().toISOString();
+  response.status(200).json({
+    updated_at: updatedAt,
+  });
 }
 
 export default status;
