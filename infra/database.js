@@ -4,7 +4,7 @@ async function query(queryObject) {
   
   let client;
   try {
-    client = await getNewCLient();
+    client = await getNewClient();
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
@@ -15,7 +15,7 @@ async function query(queryObject) {
   
 }
 
-async function getNewCLient() {
+async function getNewClient() {
   const client = new Client({
     host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT,
@@ -31,5 +31,5 @@ async function getNewCLient() {
 
 export default {
   query,
-  getNewCLient,
+  getNewClient,
 };
