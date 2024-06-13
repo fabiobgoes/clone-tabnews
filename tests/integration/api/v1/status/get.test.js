@@ -1,7 +1,8 @@
-// implementar:
-//   versão do postgres
-//   conexões máximas
-//   conexões usadas
+import orchestrator from "tests/orchestrator.js";
+
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
+});
 
 test("GET to /api/v1/status should return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/status");
@@ -15,7 +16,7 @@ test("GET to /api/v1/status should return 200", async () => {
 
   const dependencies_database = responseBody.dependencies.database;
   expect(dependencies_database.version).toEqual(expect.any(Number));
-  expect(dependencies_database.version).toEqual(16.2);
+  expect(dependencies_database.version).toEqual(16.3);
   expect(dependencies_database.max_connections).toEqual(expect.any(Number));
   expect(dependencies_database.opened_connections).toEqual(expect.any(Number));
   expect(dependencies_database.opened_connections).toEqual(1);
